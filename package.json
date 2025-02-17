@@ -1,0 +1,24 @@
+{
+  "name": "trend-tracker",
+  "version": "1.0.0",
+  "description": "Trend Tracker Application",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "google-trends-api": "^4.9.2",
+    "node-fetch": "^3.3.2"
+  },
+  "keywords": [
+    "trends",
+    "google trends",
+    "reddit",
+    "express",
+    "node.js"
+  ],
+  "author": "Bolt",
+  "license": "ISC"
+}

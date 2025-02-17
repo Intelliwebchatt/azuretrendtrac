@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trend Tracker</title>
+</head>
+<body>
+    <h1>Trending Topics</h1>
+    <ul id="trends-list"></ul>
+
+    <script>
+        async function fetchTrends() {
+            try {
+                const response = await fetch('/api/trends');
+                const trends = await response.json();
+                const trendsList = document.getElementById('trends-list');
+                trendsList.innerHTML = ''; // Clear existing list
+                trends.forEach(trend => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = trend;
+                    trendsList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error('Failed to fetch trends:', error);
+                const trendsList = document.getElementById('trends-list');
+                trendsList.innerHTML = '<li>Failed to load trends. Please refresh the page.</li>';
+            }
+        }
+
+        // Fetch trends initially
+        fetchTrends();
+
+        // Refresh trends every 60 seconds
+        setInterval(fetchTrends, 60000);
+    </script>
+</body>
+</html>
